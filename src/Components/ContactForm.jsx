@@ -23,12 +23,9 @@ const ContactForm = () => {
 
     try {
       setRegistrationLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:5000/api/user/register",
-        {
-          username,
-        }
-      );
+      const { data } = await axios.post(`${server}/api/user/register`, {
+        username,
+      });
 
       setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
