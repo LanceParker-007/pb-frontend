@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import ContactForm from "./Components/ContactForm";
+import Header from "./Components/Header";
+import MainEvent from "./Components/MainEvent";
+import PracticeButton from "./Components/PracticeButton";
+import Footer from "./Components/Footer";
+import { useAppContext } from "./Context/AppContext";
 
-function App() {
+export default function App() {
+  const { user } = useAppContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      {!user && <ContactForm />}
+      <PracticeButton />
+      <MainEvent />
+      <Footer />
+    </>
   );
 }
-
-export default App;
