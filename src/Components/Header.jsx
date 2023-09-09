@@ -19,7 +19,7 @@ const Header = () => {
         <Text>Play Brutal</Text>
       </Box>
       <Text p={2} bg={"whatsapp.200"} textAlign={"center"}>
-        Winner will get Rs.100 as winning amount
+        Winner will get Rs.200 as winning amount
         <br />
         Winner will be announced on 11th September
       </Text>
