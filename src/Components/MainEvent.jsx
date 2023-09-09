@@ -16,7 +16,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 import { server } from "..";
 import axios from "axios";
-import { isSameDay } from "data-fns";
+import { isSameDay } from "date-fns";
 
 const targetDate = new Date(2023, 8, 10);
 const currentDate = new Date();
