@@ -15,4 +15,5 @@ root.render(
   </>
 );
 
-export const server = "http://localhost:5000";
+// export const server = "http://localhost:5000";
+export const server = "https://pb-backend.vercel.app";
