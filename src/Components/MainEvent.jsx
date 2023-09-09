@@ -122,7 +122,7 @@ const MainEvent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchHighScore]);
 
-  if (new Date().toDateString() === "Tue Sep 10 2023") {
+  if (new Date().toDateString() !== "Tue Sep 10 2023") {
     return (
       <>
         <Divider my={6} height={20} />
@@ -259,7 +259,7 @@ const MainEvent = () => {
           p={1}
           _hover={{ bg: "black", color: "white" }}
         >
-          Register First
+          Main event will be visible after you register
         </Link>
 
         <span style={{ display: "inline-flex", color: "red" }}>
