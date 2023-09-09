@@ -75,6 +75,7 @@ const MainEvent = () => {
       });
       setSubmitScoreLoading(false);
       fetchHighScore();
+      console.log("here 1");
     } catch (error) {
       setSubmitScoreLoading(false);
       toast({
@@ -100,6 +101,7 @@ const MainEvent = () => {
             return prev + 1;
           } else {
             setScore();
+            console.log("here 2");
             clearInterval(intervalRef.current);
             return 60;
           }
@@ -119,6 +121,7 @@ const MainEvent = () => {
   useEffect(() => {
     if (user) {
       fetchHighScore();
+      console.log("here 3");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
