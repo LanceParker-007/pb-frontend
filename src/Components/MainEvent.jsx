@@ -93,7 +93,6 @@ const MainEvent = () => {
       clicks.current = clicks.current + 1;
       setDisplayClicks(displayClicks + 1);
     }
-
     if (!intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setTimer((prev) => {
