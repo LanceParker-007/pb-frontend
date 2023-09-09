@@ -58,6 +58,7 @@ const ContactForm = () => {
       px={2}
       display={"flex"}
       justifyContent={"center"}
+      mb={"6rem"}
     >
       <Box
         border={"1px"}
