@@ -13,41 +13,20 @@ import axios from "axios";
 
 const ContactForm = () => {
   const { setUser } = useAppContext();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobilenumber, setMobilenumber] = useState("");
+  const [username, setUsername] = useState("");
   const [registrationLoading, setRegistrationLoading] = useState(false);
   const toast = useToast();
 
   //Register for contest
   const registerUser = async (e) => {
     e.preventDefault();
-    if (email && !email.includes("@gmail.com")) {
-      toast({
-        title: "Email not valid",
-        status: "error",
-        duration: "2000",
-        position: "top",
-      });
-      return;
-    }
-    if (mobilenumber && mobilenumber.length !== 10) {
-      toast({
-        title: "Wrong mobile number ",
-        status: "error",
-        duration: "2000",
-        position: "top",
-      });
-      return;
-    }
+
     try {
       setRegistrationLoading(true);
       const { data } = await axios.post(
         "http://localhost:5000/api/user/register",
         {
-          name,
-          email,
-          mobilenumber,
+          username,
         }
       );
 
@@ -92,38 +71,14 @@ const ContactForm = () => {
         <form onSubmit={registerUser} style={{ padding: "2px 6px" }}>
           <FormControl mb={2} isRequired>
             <FormLabel htmlFor={"name"} my={0}>
-              Name
+              Username
             </FormLabel>
             <Input
               bg={"white"}
               name="name"
               type={"text"}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </FormControl>
-          <FormControl mb={2} isRequired>
-            <FormLabel htmlFor={"email"} my={0}>
-              Email
-            </FormLabel>
-            <Input
-              bg={"white"}
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </FormControl>
-          <FormControl mb={2} isRequired>
-            <FormLabel htmlFor={"name"} my={0}>
-              Mobile Number
-            </FormLabel>
-            <Input
-              bg={"white"}
-              name="mobilenumber"
-              type={"text"}
-              value={mobilenumber}
-              onChange={(e) => setMobilenumber(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </FormControl>
           <Button
