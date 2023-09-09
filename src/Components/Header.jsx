@@ -25,7 +25,7 @@ const Header = () => {
       </Text>
       <Text bg={"yellow.200"} textAlign={"center"} p={2}>
         As soon as you click in Beat me button, timer will start running. Get
-        the most clicks in 60s and you will be the winner
+        the most taps in 60s and you will be the winner
       </Text>
     </>
   );
