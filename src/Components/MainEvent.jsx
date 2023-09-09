@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Box,
   Button,
@@ -11,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 import { server } from "..";
 import axios from "axios";
@@ -24,6 +25,30 @@ const MainEvent = () => {
   const clicks = useRef(0);
   const [displayClicks, setDisplayClicks] = useState(0);
   const [submitScoreLoading, setSubmitScoreLoading] = useState(false);
+  const [highscore, setHighscore] = useState(0);
+
+  const fetchHighScore = async () => {
+    if (!user) {
+      return;
+    }
+
+    try {
+      const { data } = await axios.get(`${server}/api/user/getscore`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      setHighscore(data.highscore);
+    } catch (error) {
+      toast({
+        title: "Error fetching highscore",
+        status: "error",
+        duration: 2000,
+        position: "top",
+      });
+    }
+  };
 
   const setScore = async () => {
     try {
@@ -49,6 +74,7 @@ const MainEvent = () => {
         isClosable: true,
       });
       setSubmitScoreLoading(false);
+      fetchHighScore();
     } catch (error) {
       setSubmitScoreLoading(false);
       toast({
@@ -63,7 +89,7 @@ const MainEvent = () => {
   const startTimer = (e) => {
     e.preventDefault();
 
-    if (timer < 2) {
+    if (timer < 60) {
       clicks.current = clicks.current + 1;
       setDisplayClicks(displayClicks + 1);
     }
@@ -71,12 +97,12 @@ const MainEvent = () => {
     if (!intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setTimer((prev) => {
-          if (prev < 2) {
+          if (prev < 60) {
             return prev + 1;
-          } else if (prev === 2) {
+          } else {
             setScore();
             clearInterval(intervalRef.current);
-            return 2;
+            return 60;
           }
         });
       }, 1000);
@@ -91,7 +117,12 @@ const MainEvent = () => {
     setDisplayClicks(0);
   };
 
-  if (new Date().toDateString() !== "Tue Sep 10 2023") {
+  useEffect(() => {
+    fetchHighScore();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchHighScore]);
+
+  if (new Date().toDateString() === "Tue Sep 10 2023") {
     return (
       <>
         <Divider my={6} height={20} />
@@ -141,7 +172,8 @@ const MainEvent = () => {
         <Heading my={0} fontFamily={"monospace"}>
           Event Live Today
         </Heading>
-        <Text mb={6}>till 11:59pm </Text>
+        <Text mb={4}>till 11:59pm </Text>
+        <Text mb={2}>Your High Score is {highscore}</Text>
         <div style={{ touchAction: "none" }}>
           <VStack
             width={"24rem"}

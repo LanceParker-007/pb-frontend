@@ -16,7 +16,6 @@ const PracticeButton = () => {
 
   const startTimer = (e) => {
     e.preventDefault();
-    console.log(timer);
 
     if (timer < 10) {
       setCLicks(clicks + 1);
@@ -47,11 +46,11 @@ const PracticeButton = () => {
     <Box
       width={"full"}
       px={4}
-      py={6}
+      py={5}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      height={"60vh"}
+      height={"50vh"}
     >
       <div style={{ touchAction: "none" }}>
         <VStack
@@ -95,6 +94,8 @@ const PracticeButton = () => {
             Beat me
           </Button>
         </VStack>
+        <Text textAlign={"center"}>In practice you are given 10s.</Text>
+        <Text textAlign={"center"}>In main event you will have 60s.</Text>
       </div>
     </Box>
   );

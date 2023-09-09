@@ -40,10 +40,6 @@ const ContactForm = () => {
       });
       return;
     }
-
-    console.log(name);
-    console.log(email);
-    console.log(mobilenumber);
     try {
       setRegistrationLoading(true);
       const { data } = await axios.post(
@@ -54,7 +50,6 @@ const ContactForm = () => {
           mobilenumber,
         }
       );
-      console.log(data);
 
       setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));

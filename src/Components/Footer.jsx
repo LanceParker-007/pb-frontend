@@ -5,13 +5,13 @@ const Footer = () => {
     <Box height={"8rem"} bg={"blackAlpha.900"} p={5} color={"white"}>
       <Text fontSize={"xl"}>©PlayBrutal</Text>
       <a
-        href="mailto:hiplaybrutal@gmail.com"
+        href="mailto:contactplaybrutal@gmail.com"
         target="_blank"
         fontSize={"sm"}
         mt={"2"}
         rel="noreferrer"
       >
-        Contact: hiplaybrutal@gmail.com
+        Contact: contactplaybrutal@gmail.com
       </a>
     </Box>
   );
