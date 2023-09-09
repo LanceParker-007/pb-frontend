@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 import { server } from "..";
 import axios from "axios";
@@ -22,37 +22,13 @@ const targetDate = new Date(2023, 8, 10);
 const currentDate = new Date();
 
 const MainEvent = () => {
-  const { user } = useAppContext();
+  const { user, fetchHighScore, highscore } = useAppContext();
   const [timer, setTimer] = useState(0);
   const intervalRef = useRef(null);
   const toast = useToast();
   const clicks = useRef(0);
   const [displayClicks, setDisplayClicks] = useState(0);
   const [submitScoreLoading, setSubmitScoreLoading] = useState(false);
-  const [highscore, setHighscore] = useState(0);
-
-  const fetchHighScore = async () => {
-    if (!user) {
-      return;
-    }
-
-    try {
-      const { data } = await axios.get(`${server}/api/user/getscore`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-
-      setHighscore(data.highscore);
-    } catch (error) {
-      toast({
-        title: "Error fetching highscore",
-        status: "error",
-        duration: 2000,
-        position: "top",
-      });
-    }
-  };
 
   const setScore = async () => {
     try {
@@ -119,14 +95,6 @@ const MainEvent = () => {
     clicks.current = 0;
     setDisplayClicks(0);
   };
-
-  useEffect(() => {
-    if (user) {
-      fetchHighScore();
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (!isSameDay(currentDate, targetDate)) {
     return (
