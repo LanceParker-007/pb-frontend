@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 import axios from "axios";
+import { server } from "..";
 
 const ContactForm = () => {
   const { setUser } = useAppContext();
