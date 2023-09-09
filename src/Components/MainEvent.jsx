@@ -118,11 +118,14 @@ const MainEvent = () => {
   };
 
   useEffect(() => {
-    fetchHighScore();
+    if (user) {
+      fetchHighScore();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchHighScore]);
 
-  if (new Date().toDateString() !== "Tue Sep 10 2023") {
+  if (new Date().toDateString() !== "Sun Sep 10 2023") {
     return (
       <>
         <Divider my={6} height={20} />
