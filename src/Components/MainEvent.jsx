@@ -16,6 +16,10 @@ import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../Context/AppContext";
 import { server } from "..";
 import axios from "axios";
+import { isSameDay } from "data-fns";
+
+const targetDate = new Date(2023, 8, 10);
+const currentDate = new Date();
 
 const MainEvent = () => {
   const { user } = useAppContext();
@@ -124,7 +128,7 @@ const MainEvent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (new Date().toDateString() !== "Sun Sep 10 2023") {
+  if (!isSameDay(currentDate, targetDate)) {
     return (
       <>
         <Divider my={6} height={20} />
