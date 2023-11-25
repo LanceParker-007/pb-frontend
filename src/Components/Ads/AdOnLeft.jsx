@@ -1,9 +1,8 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
 
 const AdOnLeft = () => {
   return (
-    <Box>
+    <div>
       <amp-ad
         width="100vw"
         height="320"
@@ -15,7 +14,7 @@ const AdOnLeft = () => {
       >
         <div overflow=""></div>
       </amp-ad>
-    </Box>
+    </div>
   );
 };
 
