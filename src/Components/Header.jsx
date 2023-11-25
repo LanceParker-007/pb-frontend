@@ -18,15 +18,8 @@ const Header = () => {
         <Heading>PB</Heading>
         <Text>Play Brutal</Text>
       </Box>
-      <Text p={2} bg={"whatsapp.200"} textAlign={"center"}>
-        Winner will be announced on 11th September and will get Rs.200 as
-        winning amount
-        <br />
-      </Text>
-      <Text bg={"yellow.200"} textAlign={"center"} p={2}>
-        As soon as you click on Beat me button, timer will start running. Get
-        the most taps in 60s and you will be the winner
-      </Text>
+      <Text textAlign={"center"}>In practice you are given 10s.</Text>
+      <Text textAlign={"center"}>In main event you will have 60s.</Text>
     </>
   );
 };

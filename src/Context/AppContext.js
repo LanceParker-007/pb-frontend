@@ -32,7 +32,7 @@ const AppContextProvider = ({ children }) => {
       });
     }
   };
-  fetchHighScore();
+  // fetchHighScore();
 
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");

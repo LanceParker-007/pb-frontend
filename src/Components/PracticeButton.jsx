@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 import { useRef, useState } from "react";
+import AdOnLeft from "./Ads/AdOnLeft";
 
 const PracticeButton = () => {
   const [clicks, setCLicks] = useState(0);
@@ -47,12 +48,20 @@ const PracticeButton = () => {
       width={"full"}
       px={4}
       py={5}
-      display={"flex"}
-      justifyContent={"center"}
+      display={{ sm: "column", md: "flex" }}
+      justifyContent={{ sm: "center", md: "center" }}
       alignItems={"center"}
-      height={"50vh"}
+      height={"60vh"}
     >
-      <div style={{ touchAction: "none" }}>
+      <AdOnLeft />
+      <div
+        style={{
+          touchAction: "none",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <VStack
           width={"24rem"}
           p={2}
@@ -94,9 +103,8 @@ const PracticeButton = () => {
             Beat me
           </Button>
         </VStack>
-        <Text textAlign={"center"}>In practice you are given 10s.</Text>
-        <Text textAlign={"center"}>In main event you will have 60s.</Text>
       </div>
+      <AdOnLeft />
     </Box>
   );
 };
